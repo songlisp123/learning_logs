@@ -10,8 +10,6 @@ import java.util.Objects;
 
 //测试
 public class Employee {
-    //对象字段
-    //类的字段
     private static int nextId = 1;
     private String name;
     private double salary;
@@ -84,3 +82,10 @@ public class Employee {
         return this.nextId;
     }
 }
+这是一个雇员类，它又以下四个字段：
+///实例字段：name,salary,id
+///静态字段：nextid
+为雇员类定义了四种访问方法：
+获取雇员的名字，获取雇员的工资，获取雇员的id，获取雇员的任职日期
+//定义了一种修改器方法：用以增加雇员的工资
+//重写了超类的eqauls方法和hash方法
