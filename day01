@@ -2,7 +2,7 @@
 //1:java的objects类
 //2:重写objects类的equals方法，以及调用方法的顺序
 //☺以下是一个雇员类
-继承自java里面的超类objects
+继承自java里面的超类object
 
 import java.util.*;
 import java.time.*;
@@ -89,3 +89,5 @@ public class Employee {
 获取雇员的名字，获取雇员的工资，获取雇员的id，获取雇员的任职日期
 //定义了一种修改器方法：用以增加雇员的工资
 //重写了超类的eqauls方法和hash方法
+//这只是一个简单的类
+
