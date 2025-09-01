@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.demo.UserMapper.articleMapper">
+
+    <insert id="insertArticle">
+        INSERT INTO article(
+        id,
+        content,
+        created,
+        user_id
+        )
+        VALUES (
+        #{id},
+        #{content},
+        #{Timestamp},
+        #{userId}
+        )
+    </insert>
+    <delete id="deleteArticle">
+        delete from article
+        where id=#{id}
+    </delete>
+    <update id="updateArticleById">
+        update article
+        set content=#{content},
+        created=#{Timestamp},
+        user_id=#{userId}
+        where id=#{id}
+    </update>
+
+    <select id="selectVyId" resultType="com.example.demo.pojo.Article">
+        select id,content,created as TimeStamp ,user_id as userId from article
+        WHERE id = #{id}
+    </select>
+
+    <select id="selectAllArticle" resultType="com.example.demo.pojo.Article">
+        select id,content,created as TimeStamp ,
+        user_id as userId
+        from article
+    </select>
+
+    <select id="selectArticleById" resultType="com.example.demo.pojo.articleVO1">
+        select content,
+        created as TimeStamp,
+        user_id as userID
+        from article
+        where id=#{id}
+    </select>
+
+    <select id="selectArticleByIdV2" resultType="com.example.demo.pojo.articleVO1">
+        select content,
+        created as timeStamp,
+        user_id as userId
+        from article
+    </select>
+    <update id="dynamicUpdateArticle">
+        update article
+        <set>
+            <if test="content!=null">
+                content=#{content},
+            </if>
+            <if test="Timestamp!=null">
+                created=#{timestamp},
+            </if>
+            <if test="userId!=null">
+                user_id=#{userId}
+            </if>
+        </set>
+        where id=#{id}
+    </update>
+
+    <delete id="dynamicDeleteArticle">
+        delete from article
+        where id in(
+            <foreach item="i" collection="array" separator=",">
+                #{i}
+            </foreach>
+        )
+    </delete>
+</mapper>
