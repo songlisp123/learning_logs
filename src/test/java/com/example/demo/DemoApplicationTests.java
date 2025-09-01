@@ -236,8 +236,4 @@ class DemoApplicationTests {
 //		System.out.println(num==0?"删除失败":"删除成功");
 //	}
 	//测试动态操作
-	@Test
-	void i() {
-
-	}
 }
