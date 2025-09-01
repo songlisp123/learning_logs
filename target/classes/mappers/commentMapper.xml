@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.demo.UserMapper.commentMapper">
+    <insert id="insertComment">
+        insert into comment(
+        id,
+        article_id,
+        content,
+        created,
+        user_id
+        )
+        values (
+        #{id},
+        #{articleId},
+        #{content},
+        #{timeStamp},
+        #{userId}
+        )
+    </insert>
+    <delete id="deleteByID">
+        delete from comment
+        where id = #{id}
+    </delete>
+
+    <update id="updateById">
+        update comment
+        set content=#{content}
+        where id = #{id}
+    </update>
+
+    <select id="selectCommentById1" resultType="com.example.demo.pojo.commentVO1">
+        select id,content,
+        user_id as userId,
+        article_id as articleId
+        from comment
+        where id = #{id}
+    </select>
+
+    <select id="selectById" resultType="com.example.demo.pojo.comment">
+        select id,article_id as articleId,
+        content,
+        created as timeStamp,
+        user_id as userId
+        from comment
+        where id = #{id}
+    </select>
+
+    <select id="selectCommentById2" resultType="com.example.demo.pojo.commentVO02">
+        select a.id as articleId,c.content,c.user_id as userId
+        from comment as c,
+        article as a
+        where a.id = c.article_id
+        and a.id = #{id}
+    </select>
+</mapper>
